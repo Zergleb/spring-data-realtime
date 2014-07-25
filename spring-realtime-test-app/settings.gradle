@@ -1,1 +1,1 @@
-includeFlat 'realtime-binding', 'spring-boot-realtime-starter'
+includeFlat '../realtime-binding', 'spring-boot-realtime-starter'

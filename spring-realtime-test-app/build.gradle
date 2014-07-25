@@ -13,14 +13,10 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
-
-jar {
-    baseName = 'gs-accessing-data-rest'
-    version = '0.1.0'
-}
 
 repositories {
     mavenLocal()
@@ -37,13 +33,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-websocket")
     compile("org.springframework:spring-messaging")
     compile project(":spring-boot-realtime-starter");
-    compile project(":realtime-binding");
+    compile project(":../realtime-binding");
     
-    
-    
-    testCompile("junit:junit")
+    testCompile("junit:junit:4.11")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.0'
 }

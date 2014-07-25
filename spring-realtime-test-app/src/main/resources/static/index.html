@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html ng-app>
-<head>
-    <title>Hello WebSocket</title>
-    <script src="http://cdn.sockjs.org/sockjs-0.3.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.1/stomp.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script>
-    <script src="/webjars/realtime-binding/0.1/realtime-binding.js"></script>
-    <script type="text/javascript">
-        function PersonCtrl($scope) {
-        	var socketListener = new AngularSocketBinder($scope, "people", "/websocket", "/events/person");
-        }
-    </script>
-</head>
-<body>
-Page Loaded
-<div ng-controller="PersonCtrl">
-    <div id="conversationDiv">
-        <div ng-repeat="person in people">
-        	{{person.firstName}} {{person.lastName}}
-        </div>
-    </div>
-</div>
-</body>
+	<head>
+		<title>Hello WebSocket</title>
+		<script src="http://cdn.sockjs.org/sockjs-0.3.js"></script>
+		<script
+			src="http://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.1/stomp.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script>
+		<script src="/webjars/realtime-binding/0.1/realtime-binding.js"></script>
+		<script type="text/javascript">
+		        function PersonCtrl($scope) {
+		        	var socketListener = new AngularSocketBinder($scope, "/websocket", "/events/person");
+		        	$scope.people = socketListener.data
+		        }
+		    </script>
+	</head>
+	<body>
+		Page Loaded
+		<div ng-controller="PersonCtrl">
+			<div id="conversationDiv">
+				<div ng-repeat="person in people">{{person.firstName}}
+					{{person.lastName}}</div>
+			</div>
+		</div>
+	</body>
 </html>
